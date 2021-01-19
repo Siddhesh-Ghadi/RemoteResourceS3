@@ -78,13 +78,13 @@ jobs:
            condition: ${TRAVIS_TAG} =~ ^[0-9]+\.[0-9]+\.[0-9]+$
            
    - stage: publish multi-arch image, npm & github release
-     arch: amd64
+     arch: ppc64le
      script:
        - if [[ $TRAVIS_TAG =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then npm version --no-git-tag-version "${TRAVIS_TAG}"; fi
        #- ./build/process-template.sh kubernetes/RemoteResourceS3/resource.yaml >/tmp/resource.yaml
        - export DOCKER_CLI_EXPERIMENTAL=enabled  
        - export TRAVIS_TAG=10.0.0
-       - sudo ls -l /etc/
+       - sudo ls -l /etc/ |grep docker
        - docker manifest create quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG} quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG}-amd64 quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG}-ppc64le
 
       
