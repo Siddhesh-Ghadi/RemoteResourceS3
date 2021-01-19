@@ -92,7 +92,7 @@ jobs:
      deploy:
        # Deploy alpha builds
        - provider: script
-         script: docker push "quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG}"
+         script: docker  manifest push "quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG}"
          skip_cleanup: true
          on:
            tags: true
