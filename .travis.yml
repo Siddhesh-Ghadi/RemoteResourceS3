@@ -85,6 +85,8 @@ jobs:
        - export DOCKER_CLI_EXPERIMENTAL=enabled  
        - export TRAVIS_TAG=10.0.0
        - sudo chown -R $USER:$USER /etc/docker/
+       - ls -l /etc/docker/
+       - ls -l /etc/
        - docker manifest create quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG} quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG}-amd64 quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG}-ppc64le
 
       
