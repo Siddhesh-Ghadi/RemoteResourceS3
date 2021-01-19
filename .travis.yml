@@ -84,7 +84,7 @@ jobs:
        - ./build/process-template.sh kubernetes/RemoteResourceS3/resource.yaml >/tmp/resource.yaml
        - export DOCKER_CLI_EXPERIMENTAL=enabled 
        - sudo chown -R $USER:$USER /etc/docker/ 
-       - if [ -n "${TRAVIS_TAG}" ]; then sudo docker manifest create quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG} quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG}-amd64 quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG}-ppc64le; fi
+       - if [ -n "${TRAVIS_TAG}" ]; then docker manifest create quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG} quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG}-amd64 quay.io/siddhesh_ghadi/remoteresources3:${TRAVIS_TAG}-ppc64le; fi
       
      before_deploy:
        - docker login -u="${QUAY_ID}" -p="${QUAY_TOKEN}" quay.io
